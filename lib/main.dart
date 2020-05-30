@@ -1,6 +1,7 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertube/blocks/favorite_bloc.dart';
 import 'package:fluttertube/blocks/videos_block.dart';
 import 'package:fluttertube/screens/home.dart';
 
@@ -18,9 +19,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       bloc: VideosBloc(),
-      child: MaterialApp(
-        title: 'FlutterTube',
-        home: Home(),
+      child: BlocProvider(
+        bloc: FavoriteBloc(),
+        child: MaterialApp(
+          title: 'FlutterTube',
+          home: Home(),
+        ),
       ),
     );
   }
